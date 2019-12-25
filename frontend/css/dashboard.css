@@ -11,6 +11,10 @@
  * Main content
  */
 
+.container-fluid {
+	font-family: 'Abel', sans-serif;
+}
+
 .main {
 	padding: 20px;
 	margin: 5px;

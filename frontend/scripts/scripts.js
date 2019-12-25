@@ -9,11 +9,16 @@ $(() => {
 	const supplierInput = $('#supplier-input');
 	const productInput = $('#product-input');
 	const priceInput = $('#price-input');
+	let supplierUpdate = supplierInput.val();
+	let productUpdate = productInput.val();
+	let priceUpdate = priceInput.val();
 
 	const getProductData = () => {
-		fetch('http://localhost:3000/products')
-			.then((result) => {
-				return result.json();
+		fetch('http://localhost:3000/products', {
+			method: 'GET'
+		})
+			.then((res) => {
+				return res.json();
 			})
 			.then((data) => {
 				console.log(data);
@@ -27,29 +32,33 @@ $(() => {
 		return {
 			editId: 'edit_' + product._id,
 			deleteId: 'delete_' + product._id,
-			tdID: 'tdItem_' + product._id,
+			tdId: 'tdItem_' + product._id,
 			supplierId: 'supplier' + product._id,
 			productId: 'product' + product._id,
 			priceId: 'price' + product._id
 		};
 	};
+
 	// from db product collection returned as array and ids set up in function
 	const buildTableLayout = (product, ids) => {
 		return `
-                <div class="table-responsive">
-					<table class="table table-striped">	
-		<tbody class="text-justify">
-		<tr class="list" id="display">
+				<div class="table-responsive">
+					<table class="table">
+					<th>
+					<td scope="row" class="text-left">Supplier</td>
+					<td scope="row" class="text-left">Product</td>
+					<td scope="row" class="text-left">Price</td>
+					</th>	
+					<tbody class="table text-justify table-responsive">
+		<td scope="row id"${ids.tdId}"></td>
 		<td scope="row" id ="${ids.supplierId}">${product.supplier}</td>
 		<td scope="row " id ="${ids.productId}">${product.product}</td>
 		<td scope="row" id ="${ids.priceId}">${product.price}</td>
-		<div class="col">
-		<input type="submit" value="Edit Record" name="edit" 
-                id="${ids.editId}" class ="btn btn-primary">
-                        <input type="submit" name="delete" 
-                            value ="Delete Record"  
-							id="${ids.deleteId}" class ="btn btn-danger">
-		</div>			
+		<td class="table table-responsive">
+		<button type="button" name="edit" id="${ids.editId}" class ="btn btn-primary">Edit</button>
+		<button type="button" name="delete" id="${ids.deleteId}" class ="btn btn-danger">Delete</button>
+		</td>
+				
 		</tr>
 		</tbody>
 		</table>
@@ -60,6 +69,7 @@ $(() => {
 	const displayProductList = (data) => {
 		data.forEach((product) => {
 			let ids = buildIds(product);
+			console.log(ids);
 			display.append(buildTableLayout(product, ids));
 		});
 	};
@@ -82,4 +92,12 @@ $(() => {
 			}
 		});
 	}
+
+	// FRONT END POST, submit button working data sent to server body not saved - returning empty body
+	// working on postman - check
+
+	form.submit((e) => {
+		e.preventDefault();
+		console.log('submit button working');
+	});
 });

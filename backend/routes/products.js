@@ -16,6 +16,9 @@ router.get('/', async (req, res) => {
 // add new products to db
 router.post('/', async (req, res) => {
 	// console.log(req.body);
+	let supplierUpdate,
+		productUpdate,
+		priceUpdate = req.body;
 	const product = new Product({
 		supplier: req.body.supplier,
 		product: req.body.product,

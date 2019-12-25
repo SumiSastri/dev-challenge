@@ -28,20 +28,25 @@
 <body>
     <div class="container-fluid">
         <h3>Add suppliers & products</h3>
+        
         <form id="form-create-records">
             <label for="supplier">Supplier</label>
             <input type="text" id="supplier-input" class="form-control"
-                placeholder="Insert supplier name - required field*" value="">
+                placeholder="Insert supplier name" value="">
+
             <label for="product">Product</label>
             <input type="text" id="product-input" class="form-control"
-                placeholder="Insert product name - required field*" value="">
-            <label for="price">Price</label>
+                placeholder="Insert product name" value="">
+           
+                <label for="price">Price</label>
             <input type="text" id="price-input" value="" class="form-control"
-                placeholder="Insert price (£) - required field*">
+                placeholder="Insert price (£)">
             <br>
-            <button type="submit" value="Add Record" name="submit" id="add" class="btn btn-success">Create
+            
+            <button type="submit" value="" name="submit" id="add-record" class="btn btn-success">Create
                 Record</button>
         </form>
+
         <div class="row">
             <div class="col-sm-12 col-md-12 main">
                 <h1 class="page-header">Search by supplier, product or price</h1>
@@ -52,14 +57,11 @@
         </div>
         <!-- injected via jquery with backend data -->
         <div class="table-responsive">
-            <table class="table" id="product_table">
-                <thead>
-                    <tr>
-                        <th scope="col">Supplier</th>
-                        <th scope="col">Product</th>
-                        <th scope="col">Price</th>
-                    </tr>
-                </thead>
+            <table class="table table-striped">	      
+             
+                       
+                </tbody>
+          
                 <tr class="list" id="display"></tr>
                 </tbody>
             </table>
