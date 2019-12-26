@@ -45,16 +45,16 @@ $(() => {
 				<div class="table-responsive">
 					<table class="table">
 					<th>
-					<td scope="row" class="text-left">Supplier</td>
-					<td scope="row" class="text-left">Product</td>
-					<td scope="row" class="text-left">Price</td>
+					<td scope="row" class="col-md-3 text-left">Supplier</td>
+					<td scope="row" class="col-md-3 text-left">Product</td>
+					<td scope="row" class="col-md-3 text-left">Price</td>
 					</th>	
 					<tbody class="table text-justify table-responsive">
 		<td scope="row id"${ids.tdId}"></td>
 		<td scope="row" id ="${ids.supplierId}">${product.supplier}</td>
 		<td scope="row " id ="${ids.productId}">${product.product}</td>
 		<td scope="row" id ="${ids.priceId}">${product.price}</td>
-		<td class="table table-responsive">
+		<td class="table table-responsive col-md-3">
 		<button type="button" name="edit" id="${ids.editId}" class ="btn btn-primary">Edit</button>
 		<button type="button" name="delete" id="${ids.deleteId}" class ="btn btn-danger">Delete</button>
 		</td>
@@ -98,6 +98,30 @@ $(() => {
 
 	form.submit((e) => {
 		e.preventDefault();
-		console.log('submit button working');
+		fetch(`http://localhost:3000/products`, {
+			method: 'post',
+			body: JSON.stringify({
+				supplier: supplierUpdate,
+				product: productUpdate,
+				price: priceUpdate
+			}),
+			headers: {
+				'Content-type': 'application/json; charset-utf-8'
+			}
+		})
+			.then((res) => {
+				console.log(res);
+				return res.json();
+			})
+			.then((data) => {
+				console.log(data);
+				if (data.res.ok) {
+					// point of error here - not returing the data
+					let ids = buildIds(data.savedProduct);
+					display.append(buildTableLayout(data.savedProduct, ids));
+				} else {
+					console.log('something went wrong');
+				}
+			});
 	});
 });

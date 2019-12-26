@@ -18,13 +18,21 @@ app.get('/', (req, res) => {
 });
 
 const url = 'mongodb://localhost:27017/products-db';
-mongoose.connect(url, { useNewUrlParser: true }, (error) => {
-	if (!error) {
-		console.log('mongo-db connection working');
-	} else {
-		console.log('check mongo-db connection');
+mongoose.connect(
+	url,
+	{
+		useNewUrlParser: true,
+		useCreateIndex: true,
+		useUnifiedTopology: true
+	},
+	(error) => {
+		if (!error) {
+			console.log('mongo-db connection working');
+		} else {
+			console.log('check mongo-db connection');
+		}
 	}
-});
+);
 mongoose.Promise = global.Promise;
 
 app.listen(process.env.port || 3000, () => console.log(`server connected on ${port}`));
