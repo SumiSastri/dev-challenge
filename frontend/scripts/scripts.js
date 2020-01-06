@@ -24,8 +24,9 @@ $(() => {
 	};
 	getProductData();
 
-	const deleteRecord = (product, tdId, deleteId) => {
+	const deleteProductRecord = (product, tdId, deleteId) => {
 		let deleteButton = $(`#${deleteId}`);
+		console.log(deleteButton);
 		deleteButton.click(() => {
 			console.log('delete button working');
 			fetch(`http://localhost:3000/products/${product._id}`, {
@@ -39,6 +40,34 @@ $(() => {
 						$(`#${tdId}`).remove();
 					}
 				});
+		});
+	};
+
+	const editProductRecord = (product, tdId, editId) => {
+		let editButton = $(`#${editId}`);
+		console.log(editButton);
+		editButton.click(() => {
+			console.log('edit button working');
+			fetch(`http://localhost:3000/products/${product._id}`, {
+				method: 'PUT',
+				mode: 'cors',
+				body: JSON.stringify({
+					supplier: supplierInput.val(),
+					product: productInput.val(),
+					price: priceInput.val()
+				}),
+				headers: {
+					'Content-type': 'application/json'
+				}
+			}).then((res) => {
+				return res.json();
+			});
+			// .then((data) => {
+			// 			if (data) {
+			// 				let updateProductRecord =$(`#${tdId._id}`)
+			// 				updateProductRecord.html(data.value)
+			// 			}
+			// 	})
 		});
 	};
 
@@ -76,7 +105,8 @@ $(() => {
 			let ids = buildIds(product);
 			// console.log(ids);
 			display.append(buildTableLayout(product, ids));
-			deleteRecord(product, ids.tdId, ids.deleteId);
+			deleteProductRecord(product, ids.tdId, ids.deleteId);
+			editProductRecord(product, ids.tdId, ids.editId);
 		});
 	};
 
@@ -103,7 +133,7 @@ $(() => {
 		e.preventDefault();
 		console.log('supplier input:', supplierInput.val());
 		fetch(`http://localhost:3000/products`, {
-			method: 'post',
+			method: 'POST',
 			mode: 'cors',
 			body: JSON.stringify({
 				supplier: supplierInput.val(),
@@ -120,8 +150,8 @@ $(() => {
 				if (data) {
 					let ids = buildIds(data.savedProduct);
 					display.append(buildTableLayout(data.savedProduct, ids));
-					// updateRecord(data.savedProduct, ids.tdId, ids.editId);
-					// deleteRecord(data.savedProduct, ids.tdId, ids.deleteId);
+					deleteProductRecord(data.savedProduct, ids.tdId, ids.deleteId);
+					editProductRecord(data.savedProduct, ids.tdId, ids.editId);
 				} else {
 					console.log('something went wrong');
 				}
