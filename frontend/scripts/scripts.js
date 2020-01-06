@@ -9,9 +9,9 @@ $(() => {
 	const supplierInput = $('#supplier-input');
 	const productInput = $('#product-input');
 	const priceInput = $('#price-input');
-	let supplierUpdate = supplierInput.val();
-	let productUpdate = productInput.val();
-	let priceUpdate = priceInput.val();
+	// let supplierUpdate = supplierInput.val();
+	// let productUpdate = productInput.val();
+	// let priceUpdate = priceInput.val();
 
 	const getProductData = () => {
 		fetch('http://localhost:3000/products', {
@@ -69,7 +69,7 @@ $(() => {
 	const displayProductList = (data) => {
 		data.forEach((product) => {
 			let ids = buildIds(product);
-			console.log(ids);
+			// console.log(ids);
 			display.append(buildTableLayout(product, ids));
 		});
 	};
@@ -98,25 +98,23 @@ $(() => {
 
 	form.submit((e) => {
 		e.preventDefault();
+		console.log('supplier input:', supplierInput.val());
 		fetch(`http://localhost:3000/products`, {
 			method: 'post',
+			mode: 'cors',
 			body: JSON.stringify({
-				supplier: supplierUpdate,
-				product: productUpdate,
-				price: priceUpdate
+				supplier: supplierInput.val(),
+				product: productInput.val(),
+				price: priceInput.val()
 			}),
 			headers: {
-				'Content-type': 'application/json; charset-utf-8'
+				'Content-type': 'application/json'
 			}
 		})
-			.then((res) => {
-				console.log(res);
-				return res.json();
-			})
+			.then((res) => res.json())
 			.then((data) => {
-				console.log(data);
+				console.log('data response', typeof data);
 				if (data.res.ok) {
-					// point of error here - not returing the data
 					let ids = buildIds(data.savedProduct);
 					display.append(buildTableLayout(data.savedProduct, ids));
 				} else {

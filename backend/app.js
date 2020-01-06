@@ -4,10 +4,18 @@ const port = 3000;
 const mongoose = require('mongoose');
 const path = require('path');
 const cors = require('cors');
+const bodyParser = require('body-parser');
+
+const productsRoute = require('./routes/products');
 
 app.use(cors());
 app.use(express.json());
 app.use('/products', require('./routes/products'));
+app.use(
+	bodyParser.urlencoded({
+		extended: true
+	})
+);
 
 app.get('/', (req, res) => {
 	res.send('home route working');
@@ -35,4 +43,4 @@ mongoose.connect(
 );
 mongoose.Promise = global.Promise;
 
-app.listen(process.env.port || 3000, () => console.log(`server connected on ${port}`));
+app.listen(3000, () => console.log(`server connected on ${port}`));

@@ -15,17 +15,16 @@ router.get('/', async (req, res) => {
 
 // add new products to db
 router.post('/', async (req, res) => {
-	// console.log(req.body);
-	let supplierUpdate,
-		productUpdate,
-		priceUpdate = req.body;
-	const product = new Product({
-		supplier: req.body.supplier,
-		product: req.body.product,
-		price: req.body.price
+	let { supplier, product, price } = req.body;
+	const productPayload = new Product({
+		supplier,
+		product,
+		price
 	});
+	console.log('body:', req.body);
+	console.log('product:', productPayload);
 	try {
-		const savedProduct = await product.save();
+		const savedProduct = await productPayload.save();
 		res.status(200).json(savedProduct);
 	} catch (err) {
 		res.status(422).json({ message: err });

@@ -11,9 +11,6 @@
     <link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Abel&display=swap" rel="stylesheet">
     <link href="frontend/css/dashboard.css" rel="stylesheet">
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-        crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
         crossorigin="anonymous"></script>
@@ -22,6 +19,9 @@
         crossorigin="anonymous"></script>
     <script src="node_modules/jquery/dist/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
     <script src="frontend/scripts/scripts.js" charset="utf-8"></script>
 
 </head>
@@ -32,13 +32,13 @@
 
         <form id="form-create-records">
             <label for="supplier">Supplier</label>
-            <input type="text" id="supplier-input" class="form-control" placeholder="Insert supplier name" value="">
+            <input type="text" id="supplier-input" class="form-control" placeholder="Insert supplier name">
 
             <label for="product">Product</label>
-            <input type="text" id="product-input" class="form-control" placeholder="Insert product name" value="">
+            <input type="text" id="product-input" class="form-control" placeholder="Insert product name">
 
             <label for="price">Price</label>
-            <input type="text" id="price-input" value="" class="form-control" placeholder="Insert price (£)">
+            <input type="text" id="price-input" class="form-control" placeholder="Insert price (£)">
             <br>
 
             <button type="submit" value="" name="submit" id="add-record" class="btn btn-success">Create
