@@ -18,7 +18,7 @@ $(() => {
 				return res.json();
 			})
 			.then((data) => {
-				console.log(data);
+				// console.log(data);
 				displayProductList(data);
 			});
 	};
@@ -26,7 +26,7 @@ $(() => {
 
 	const deleteProductRecord = (product, tdId, deleteId) => {
 		let deleteButton = $(`#${deleteId}`);
-		console.log(deleteButton);
+		// console.log(deleteButton);
 		deleteButton.click(() => {
 			console.log('delete button working');
 			fetch(`http://localhost:3000/products/${product._id}`, {
@@ -59,15 +59,18 @@ $(() => {
 				headers: {
 					'Content-type': 'application/json'
 				}
-			}).then((res) => {
-				return res.json();
-			});
-			// .then((data) => {
-			// 			if (data) {
-			// 				let updateProductRecord =$(`#${tdId._id}`)
-			// 				updateProductRecord.html(data.value)
-			// 			}
-			// 	})
+			})
+				.then((res) => {
+					console.log(res);
+					return res.json();
+				})
+				.then((data) => {
+					if (data) {
+						console.log(data);
+						// let updateProductRecord = $(`#${tdId}`);
+						// updateProductRecord.html(data.value.savedProduct);
+					}
+				});
 		});
 	};
 
@@ -131,7 +134,7 @@ $(() => {
 
 	form.submit((e) => {
 		e.preventDefault();
-		console.log('supplier input:', supplierInput.val());
+		// console.log('supplier input:', supplierInput.val());
 		fetch(`http://localhost:3000/products`, {
 			method: 'POST',
 			mode: 'cors',
@@ -146,12 +149,12 @@ $(() => {
 		})
 			.then((res) => res.json())
 			.then((data) => {
-				console.log('data response', typeof data);
+				// console.log('data response', typeof data);
 				if (data) {
 					let ids = buildIds(data.savedProduct);
 					display.append(buildTableLayout(data.savedProduct, ids));
 					deleteProductRecord(data.savedProduct, ids.tdId, ids.deleteId);
-					editProductRecord(data.savedProduct, ids.tdId, ids.editId);
+					editProductRecord(data.savedProduct, supplierId, productId, priceId, ids.tdId, ids.editId);
 				} else {
 					console.log('something went wrong');
 				}
