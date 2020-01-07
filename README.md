@@ -4,22 +4,30 @@
  - npm run start (starts back-end server and seeded db)
  - go to html - open with live-server (view front end)
 
-This is how I interpreted the brief
-**Please demonstrate:**
-* Selecting suppliers and products in the drop-downs
+**This is how I interpreted the brief**
+
+* Selecting suppliers and products (Search filter)
 ![dev-challenge](frontend/assets/search-filter.png)
-* A round-trip to a server pulling back prices
-* Displaying the returned data in the grid
-![dev-challenge](frontend/assets/home-page.png)
-* Anything else you'd like to show us
-- Create record
+
+*CRUD* 
+*(A round-trip to a server pulling back price/ displaying the returned data in the grid)*
+
+- Create record (before)
 ![dev-challenge](frontend/assets/create-test-before.png)
+- Create record (after)
 ![dev-challenge](frontend/assets/create-test-after.png)
-- Edit record
+
+- Read records (home-page)
+![dev-challenge](frontend/assets/home-page.png)
+
+- Edit record (before)
 ![dev-challenge](frontend/assets/edit-price-22-before.png)
+- Edit record (after)
 ![dev-challenge](frontend/assets/edit-price-22-after.png)
-- Delete record
+
+- Delete record (before)
 ![dev-challenge](frontend/assets/delete-test-22-before.png)
+- Delete record (after)
 ![dev-challenge](frontend/assets/delete-test-22-after.png)
 
 ## My Approach
