@@ -67,8 +67,10 @@ $(() => {
 				.then((data) => {
 					if (data) {
 						console.log(data);
-						// let updateProductRecord = $(`#${tdId}`);
-						// updateProductRecord.html(data.value.savedProduct);
+						let updatedProductRecord = $(`#${tdId}`);
+						// updatedProductRecord.html(data.value.product);
+						// let updatedSupplier = $(`#${product.supplier}`);
+						// updatedSupplier.html(data.value.product.supplier);
 					}
 				});
 		});
@@ -87,18 +89,20 @@ $(() => {
 
 	const buildTableLayout = (product, ids) => {
 		return `
-		<tr class="tr-group-item">
-		<th class="row">
+		<thead>
+		<tr>
 		<td id="${ids.tdId}"></td>
-		<td class=" col-md-4 text-left" id ="${ids.supplierId}">${product.supplier}</td>
-		<td class="col-md-4 text-left" id ="${ids.productId}">${product.product}</td>
-		<td class="col-md-4 text-left" id ="${ids.priceId}">${product.price}</td>
-		<td class="col-md-4">
+		<td scope ="row" class=" col-md-4 text-left" id ="${ids.supplierId}">${product.supplier}</td>
+		<td scope ="row" class="col-md-4 text-left" id ="${ids.productId}">${product.product}</td>
+		<td scope="row" class="col-md-4 text-left" id ="${ids.priceId}">${product.price}</td>
+		<td scope="row" class="col-md-3">
 		<button type="button" name="edit" id="${ids.editId}" class ="btn btn-primary">Edit</button>
+		</td>
+		<td scope="row" class="col-md-3">
 		<button type="button" name="delete" id="${ids.deleteId}" class ="btn btn-danger">Delete</button>
 		</td>
-		</th>		
-		</tr>             
+		</tr>
+		</thead>	         
 		`;
 	};
 	// bootstrap - tr row - td cell

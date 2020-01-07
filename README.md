@@ -1,49 +1,47 @@
-This is how I interpreted the brief
-![dev-challenge](frontend/assets/dev-challenge-screenshot.png)
+**Review project**
+ - clone file
+ - npm init
+ - npm run start (starts back-end server and seeded db)
+ - go to html - open with live-server (view front end)
 
+This is how I interpreted the brief
 **Please demonstrate:**
 * Selecting suppliers and products in the drop-downs
+![dev-challenge](frontend/assets/search-filter.png)
 * A round-trip to a server pulling back prices
 * Displaying the returned data in the grid
+![dev-challenge](frontend/assets/home-page.png)
 * Anything else you'd like to show us
-
-### Sample data
-
-| Supplier    | Product      | Price (£) |
-| ------------|--------------|-----------|
-| New Co Ltd  | Small wongle | 5         |
-| New Co Ltd  | Large wongle | 8         |
-| New Co Ltd  | Super wongle | 12        |
-| Old Co Ltd  | Mini wongle  | 4         |
-| Old Co Ltd  | Small wongle | 6         |
-| Old Co Ltd  | Large wongle | 9         |
-| Old Co Ltd  | Super wongle | 13        |
+- Create record
+![dev-challenge](frontend/assets/create-test-before.png)
+![dev-challenge](frontend/assets/create-test-after.png)
+- Edit record
+![dev-challenge](frontend/assets/edit-price-22-before.png)
+![dev-challenge](frontend/assets/edit-price-22-after.png)
+- Delete record
+![dev-challenge](frontend/assets/delete-test-22-before.png)
+![dev-challenge](frontend/assets/delete-test-22-after.png)
 
 ## My Approach
 
 I checked that j-query was up and running then moved from the front-end to the backend.
 - Installed dependencies checked package json
-- Set up DB - Mongo
-- Set up routes - Express-node 
-- Tested routes with Postman and RoboT
-- Used fetch API to display data - using j-query to inject data into layout
+- Set up back-end server (Express-Node)
+- Connected DB Mongo (Mongoose)
+- Coded backend routes(controllers)
+- Tested routes with Postman
+- Used fetch API to display data - used j-query to inject data into layout
 - Removed the HTML tags related to the injected j-query elements and looked at the Ui-Ux. 
-- User search filter rather than a drop-down select filter. The reason being mobile users would prefer to type and search - helps with fat fingers! I know I have them!
-- Refactored, reviewed for clean code
+- User search filter rather than a drop-down select filter. 
+- Set-up front-end routes
+ - Create
+ - Read (display data)
+ - Update (- Edit button works but not in a way that is user friendly)
+ - Delete
 
-- Considered 
-    - adding user input functionality
-    - swapping from j-query to React 
+ ## Work-in-progress
 
-If I had more time
-   - would add functionality to the front-end to take user inputs
-   - would do it in j-query found it interesting comparing it to React
-   - would move the edit and delete buttons to fit into the  table row
-   - would review Bootstrap documentation improve look and feel
-
-Thanks for an interesting challenge!
-
-PS: With the Catalina update I have challenges with Node lurking files and possibly an unstable v13 install I have been looking at fixing this with these useful instructions - apologies this is on my to-do list!
-
-[https://stackabuse.com/how-to-uninstall-node-js-from-mac-osx/
-https://stackoverflow.com/questions/11177954/how-do-i-completely-uninstall-node-js-and-reinstall-from-beginning-mac-os-x]
+  - Improve edit button ui-ux (review j-query and bootstrap)
+  - Add reset values instead of refreshing with refresh browser option
+  - Work on this excercise like a Kata - redo with React.js
+  - Refactor - clean and shorten code where possible

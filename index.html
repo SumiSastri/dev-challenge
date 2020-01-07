@@ -28,9 +28,10 @@
 
 <body>
     <div class="container-fluid">
-        <h3>Add suppliers & products</h3>
 
         <form id="form-create-records">
+            <h3>Add suppliers & products</h3>
+
             <label for="supplier">Supplier</label>
             <input type="text" id="supplier-input" class="form-control" placeholder="Insert supplier name">
 
@@ -53,20 +54,18 @@
                 </div>
             </div>
         </div>
-        <!-- injected via jquery with backend data -->
-        <table class="table table-responsive table-striped">
+
+        <table class="table table-responsive">
             <thead>
                 <tr>
-                    <th scope="row" class="col-md-4">Supplier</th>
-                    <th scope="row" class="col-md-4">Product</th>
-                    <th scope="row" class="col-md-4">Price</th>
-                    <th scope="row" class="col-md-4">Edit/Delete Records</th>
+                    <th>Supplier / Product / Price</th>
                 </tr>
             </thead>
-            </tbody>
-            <tr class="list" id="display"></tr>
-            </tbody>
+            <tr id="display">
+     <!-- injected via jquery with backend data -->
+            </tr>    
         </table>
+
     </div>
 </body>
 
