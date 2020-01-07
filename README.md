@@ -14,20 +14,20 @@
 
 - Create record (before)
 ![dev-challenge](frontend/assets/create-test-before.png)
-- Create record (after)
+- Create record (after Test-22 created)
 ![dev-challenge](frontend/assets/create-test-after.png)
 
-- Read records (home-page)
+- Read records (home-page db seeded data)
 ![dev-challenge](frontend/assets/home-page.png)
 
 - Edit record (before)
 ![dev-challenge](frontend/assets/edit-price-22-before.png)
-- Edit record (after)
+- Edit record (after - Old Co price changed from 22 to 102)
 ![dev-challenge](frontend/assets/edit-price-22-after.png)
 
 - Delete record (before)
 ![dev-challenge](frontend/assets/delete-test-22-before.png)
-- Delete record (after)
+- Delete record (after Test-22 deleted)
 ![dev-challenge](frontend/assets/delete-test-22-after.png)
 
 ## My Approach
